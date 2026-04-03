@@ -1,4 +1,26 @@
-import { useState, useMemo, useRef, useEffect } from "react";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FIFA World Cup 2026 – Broadcast Guide</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.development.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.development.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.2/babel.min.js"></script>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; padding: 0; background: #0f172a; }
+    select option { background: #0f172a; color: #f1f5f9; }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #1e293b; }
+    ::-webkit-scrollbar-thumb { background: #334155; border-radius: 3px; }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    const { useState, useMemo, useRef, useEffect } = React;
+
 
 // ─── BROADCAST DATA ────────────────────────────────────────────────────────────
 const BROADCAST_DATA = {
@@ -787,7 +809,7 @@ function detectCountry() {
 }
 
 // ─── MAIN APP ────────────────────────────────────────────────────────────────
-export default function WorldCup2026() {
+function WorldCup2026() {
   const [selectedCountry, setSelectedCountry] = useState("");
   const [selectedRegion, setSelectedRegion] = useState("All Regions");
   const [phaseFilter, setPhaseFilter] = useState("All");
@@ -969,3 +991,10 @@ export default function WorldCup2026() {
     </div>
   );
 }
+
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(React.createElement(WorldCup2026));
+  </script>
+</body>
+</html>
