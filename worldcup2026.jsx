@@ -541,9 +541,9 @@ function CountrySearch({ options, value, onChange }) {
 function BroadcastBanner({ countryCode, autoDetected }) {
   if (!countryCode) {
     return (
-      <div style={{ background: "#1e293b", borderRadius: 10, padding: "14px 18px", marginBottom: 20, border: "1px solid #334155", textAlign: "center" }}>
-        <p style={{ color: "#94a3b8", margin: 0, fontSize: 14 }}>
-          🌍 Select a country above to see broadcast info on every match card.
+      <div style={{ background: "#111827", borderRadius: 8, padding: "8px 14px", marginBottom: 10, border: "1px solid #1f2937" }}>
+        <p style={{ color: "#374151", margin: 0, fontSize: 11 }}>
+          Select a country above to see broadcast info on each match.
         </p>
       </div>
     );
@@ -551,32 +551,31 @@ function BroadcastBanner({ countryCode, autoDetected }) {
   const bc = BROADCAST_DATA[countryCode];
   if (!bc) return null;
   return (
-    <div style={{ background: "linear-gradient(135deg,#1e3a5f,#0f2340)", borderRadius: 10, padding: "12px 18px", marginBottom: 20, border: "1px solid #2d4a70", display: "flex", alignItems: "center", gap: 14, flexWrap: "wrap" }}>
-      <span style={{ fontSize: 26 }}>{bc.flag}</span>
-      <div style={{ flex: 1 }}>
-        <span style={{ color: "#f1f5f9", fontWeight: 700, fontSize: 15 }}>{bc.country}</span>
-        <span style={{ color: "#64748b", fontSize: 13, marginLeft: 8 }}>· Broadcast info shown on each match below</span>
+    <div style={{ background: "#111827", borderRadius: 8, padding: "10px 14px", marginBottom: 10, border: "1px solid #1f2937", display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
+      <span style={{ fontSize: 20 }}>{bc.flag}</span>
+      <div style={{ flex: 1, display: "flex", alignItems: "center", flexWrap: "wrap", gap: 6 }}>
+        <span style={{ color: "#f1f5f9", fontWeight: 700, fontSize: 13 }}>{bc.country}</span>
+        <span style={{ color: "#374151", fontSize: 11 }}>· showing broadcast for each match</span>
         {autoDetected && (
           <span style={{
-            display: "inline-block", marginLeft: 10,
-            background: "#1e3a5f", color: "#60a5fa",
-            fontSize: 11, fontWeight: 600,
-            padding: "2px 8px", borderRadius: 12,
-            border: "1px solid #2563eb",
+            background: "#0a1628", color: "#60a5fa",
+            fontSize: 10, fontWeight: 600,
+            padding: "2px 7px", borderRadius: 6,
+            border: "1px solid #1e3a5f",
           }}>
             📍 Auto-detected
           </span>
         )}
       </div>
       <span style={{
-        background: bc.fta ? "#14532d" : "#431407",
+        background: bc.fta ? "#052e16" : "#2d0a00",
         color: bc.fta ? "#4ade80" : "#fb923c",
-        fontSize: 12, fontWeight: 700,
-        padding: "4px 12px", borderRadius: 20,
-        border: `1px solid ${bc.fta ? "#166534" : "#9a3412"}`,
+        fontSize: 10, fontWeight: 700,
+        padding: "3px 10px", borderRadius: 6,
+        border: `1px solid ${bc.fta ? "#14532d" : "#7c2d12"}`,
         whiteSpace: "nowrap",
       }}>
-        {bc.fta ? "✓ Free-to-Air Available" : "⚠ Subscription Required"}
+        {bc.fta ? "✓ Free-to-Air" : "⚠ Subscription"}
       </span>
     </div>
   );
@@ -840,46 +839,71 @@ export default function WorldCup2026() {
   return (
     <div style={{ minHeight: "100vh", background: "#0f172a", color: "#f1f5f9", fontFamily: "'Segoe UI', system-ui, sans-serif" }}>
       {/* ── HEADER ── */}
-      <div style={{ background: "linear-gradient(135deg,#1e3a5f 0%,#0a1628 100%)", padding: "32px 24px 24px", textAlign: "center", borderBottom: "2px solid #1e3a5f" }}>
-        <div style={{ fontSize: 48, marginBottom: 8 }}>⚽</div>
-        <h1 style={{ margin: "0 0 6px", fontSize: 32, fontWeight: 800, background: "linear-gradient(90deg,#f59e0b,#fbbf24,#f97316)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
-          FIFA World Cup 2026™
-        </h1>
-        <p style={{ color: "#94a3b8", margin: 0, fontSize: 15 }}>June 11 – July 19 · USA · Canada · Mexico · 48 Teams · 104 Matches</p>
-        <div style={{ marginTop: 16, display: "flex", justifyContent: "center", gap: 8 }}>
-          {["schedule","groups"].map(t => (
-            <button key={t} onClick={() => setTab(t)}
-              style={{ background: tab === t ? "#2563eb" : "#1e293b", color: "#f1f5f9", border: "1px solid #334155", borderRadius: 20, padding: "8px 20px", cursor: "pointer", fontWeight: 600, fontSize: 14, textTransform: "capitalize" }}>
-              {t === "schedule" ? "📅 Schedule" : "🗂 All Groups"}
-            </button>
-          ))}
+      <div style={{
+        background: "#0a1628",
+        borderBottom: "1px solid #1e3a5f",
+        padding: "12px 20px",
+      }}>
+        <div style={{ maxWidth: 900, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 10 }}>
+          {/* Left: title block */}
+          <div>
+            <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+              <h1 style={{ margin: 0, fontSize: 17, fontWeight: 700, letterSpacing: 0.3, color: "#f1f5f9" }}>
+                FIFA World Cup <span style={{ color: "#f59e0b" }}>2026™</span>
+              </h1>
+              <span style={{ background: "#1e3a5f", color: "#60a5fa", fontSize: 10, fontWeight: 700, padding: "2px 7px", borderRadius: 8, letterSpacing: 0.5, border: "1px solid #2563eb" }}>
+                LIVE GUIDE
+              </span>
+            </div>
+            <p style={{ color: "#475569", margin: "2px 0 0", fontSize: 11 }}>
+              Jun 11 – Jul 19 · USA · CAN · MEX · 48 teams · 104 matches
+            </p>
+          </div>
+          {/* Right: tab pills */}
+          <div style={{ display: "flex", gap: 6 }}>
+            {[["schedule","📅 Schedule"],["groups","All Groups"]].map(([t, label]) => (
+              <button key={t} onClick={() => setTab(t)} style={{
+                background: tab === t ? "#2563eb" : "#1e293b",
+                color: tab === t ? "#fff" : "#64748b",
+                border: `1px solid ${tab === t ? "#3b82f6" : "#334155"}`,
+                borderRadius: 8, padding: "6px 14px",
+                cursor: "pointer", fontWeight: 600, fontSize: 12,
+                letterSpacing: 0.2,
+              }}>
+                {label}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
 
-      <div style={{ maxWidth: 900, margin: "0 auto", padding: "24px 16px" }}>
+      <div style={{ maxWidth: 900, margin: "0 auto", padding: "14px 16px" }}>
         {tab === "groups" ? (
           <>
-            <h2 style={{ color: "#93c5fd", marginBottom: 16, fontSize: 20 }}>🗺 All 12 Groups</h2>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(170px, 1fr))", gap: 12 }}>
+            <h2 style={{ color: "#93c5fd", marginBottom: 12, fontSize: 15, fontWeight: 600, margin: "0 0 12px" }}>All 12 Groups</h2>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(160px, 1fr))", gap: 10 }}>
               {"ABCDEFGHIJKL".split("").map(g => <GroupCard key={g} groupLetter={g} />)}
             </div>
-            <div style={{ marginTop: 24, background: "#1e293b", borderRadius: 12, padding: 20, border: "1px solid #334155" }}>
-              <h3 style={{ color: "#f59e0b", margin: "0 0 12px" }}>🏆 Tournament Format</h3>
-              <p style={{ color: "#94a3b8", lineHeight: 1.7, margin: 0 }}>
-                48 teams compete in 12 groups of 4. The top 2 teams from each group <strong style={{color:"#e2e8f0"}}>plus the 8 best 3rd-place teams</strong> advance to a new Round of 32 — a format debut at the World Cup. From there, the knockout bracket runs through Round of 16 → Quarterfinals → Semifinals → Final at MetLife Stadium on July 19.
+            <div style={{ marginTop: 16, background: "#1e293b", borderRadius: 10, padding: "14px 16px", border: "1px solid #334155" }}>
+              <h3 style={{ color: "#f59e0b", margin: "0 0 8px", fontSize: 13, fontWeight: 700 }}>Tournament Format</h3>
+              <p style={{ color: "#94a3b8", lineHeight: 1.6, margin: 0, fontSize: 13 }}>
+                48 teams · 12 groups of 4. Top 2 from each group <strong style={{color:"#e2e8f0"}}>+ 8 best 3rd-place teams</strong> advance to a new Round of 32. Then R16 → QF → SF → Final at MetLife Stadium, Jul 19.
               </p>
             </div>
           </>
         ) : (
           <>
             {/* ── COUNTRY SELECTOR ── */}
-            <div style={{ background: "#1e293b", borderRadius: 12, padding: "20px", marginBottom: 20, border: "1px solid #334155" }}>
-              <h2 style={{ color: "#f1f5f9", margin: "0 0 16px", fontSize: 18 }}>🌍 Where Are You Watching?</h2>
-              <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-                <div style={{ flex: "1 1 200px" }}>
-                  <label style={{ color: "#94a3b8", fontSize: 12, display: "block", marginBottom: 6 }}>REGION</label>
+            <div style={{ background: "#111827", borderRadius: 10, padding: "12px 14px", marginBottom: 10, border: "1px solid #1f2937" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 10 }}>
+                <span style={{ color: "#60a5fa", fontSize: 13 }}>🌍</span>
+                <span style={{ color: "#94a3b8", fontSize: 12, fontWeight: 600, letterSpacing: 0.5, textTransform: "uppercase" }}>Where are you watching?</span>
+              </div>
+              <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+                <div style={{ flex: "1 1 160px" }}>
+                  <label style={{ color: "#475569", fontSize: 10, display: "block", marginBottom: 4, textTransform: "uppercase", letterSpacing: 0.6 }}>Region</label>
                   <select value={selectedRegion} onChange={e => { setSelectedRegion(e.target.value); setSelectedCountry(""); setAutoDetected(false); }}
-                    style={{ width: "100%", background: "#0f172a", color: "#f1f5f9", border: "1px solid #475569", borderRadius: 8, padding: "10px 12px", fontSize: 14 }}>
+                    style={{ width: "100%", background: "#0f172a", color: "#f1f5f9", border: "1px solid #374151", borderRadius: 7, padding: "8px 10px", fontSize: 13 }}>
                     {REGIONS.map(r => <option key={r} value={r}>{r}</option>)}
                   </select>
                 </div>
@@ -895,51 +919,51 @@ export default function WorldCup2026() {
             <BroadcastBanner countryCode={selectedCountry} autoDetected={autoDetected} />
 
             {/* ── FILTERS ── */}
-            <div style={{ marginBottom: 16 }}>
-              <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 12 }}>
+            <div style={{ marginBottom: 10 }}>
+              <div style={{ display: "flex", gap: 6, flexWrap: "wrap", marginBottom: 8 }}>
                 {phaseButtons.map(p => (
                   <button key={p} onClick={() => setPhaseFilter(p)}
-                    style={{ background: phaseFilter === p ? "#2563eb" : "#1e293b", color: phaseFilter === p ? "#fff" : "#94a3b8", border: `1px solid ${phaseFilter === p ? "#3b82f6" : "#334155"}`, borderRadius: 20, padding: "6px 14px", cursor: "pointer", fontSize: 13, fontWeight: phaseFilter === p ? 700 : 400 }}>
+                    style={{ background: phaseFilter === p ? "#2563eb" : "#111827", color: phaseFilter === p ? "#fff" : "#64748b", border: `1px solid ${phaseFilter === p ? "#3b82f6" : "#1f2937"}`, borderRadius: 6, padding: "4px 11px", cursor: "pointer", fontSize: 12, fontWeight: phaseFilter === p ? 700 : 400 }}>
                     {p}
                   </button>
                 ))}
               </div>
               <input
                 type="text"
-                placeholder="🔍 Search by team name..."
+                placeholder="Search by team name..."
                 value={searchTeam}
                 onChange={e => setSearchTeam(e.target.value)}
-                style={{ width: "100%", boxSizing: "border-box", background: "#1e293b", color: "#f1f5f9", border: "1px solid #475569", borderRadius: 8, padding: "10px 14px", fontSize: 14 }}
+                style={{ width: "100%", boxSizing: "border-box", background: "#111827", color: "#f1f5f9", border: "1px solid #1f2937", borderRadius: 7, padding: "8px 12px", fontSize: 13 }}
               />
             </div>
 
             {/* ── MATCH LIST ── */}
-            <div style={{ marginBottom: 8, color: "#64748b", fontSize: 13 }}>
-              Showing {filteredMatches.length} match{filteredMatches.length !== 1 ? "es" : ""} · Times shown in your local timezone
+            <div style={{ marginBottom: 6, color: "#475569", fontSize: 11, letterSpacing: 0.3 }}>
+              {filteredMatches.length} match{filteredMatches.length !== 1 ? "es" : ""} · times in your local timezone
             </div>
 
             {groupedMatches.length === 0 && (
-              <div style={{ textAlign: "center", color: "#64748b", padding: 40 }}>No matches found for this filter.</div>
+              <div style={{ textAlign: "center", color: "#64748b", padding: 32, fontSize: 13 }}>No matches found for this filter.</div>
             )}
 
             {groupedMatches.map(({ phase, matches }) => (
-              <div key={phase} style={{ marginBottom: 28 }}>
-                <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12 }}>
-                  <div style={{ height: 3, flex: 1, background: `linear-gradient(90deg, ${PHASE_COLORS[phase] || "#334155"}, transparent)`, borderRadius: 2 }} />
-                  <h3 style={{ margin: 0, color: "#f1f5f9", fontSize: 16, fontWeight: 700, whiteSpace: "nowrap" }}>
-                    {phase} {isGroupPhase(phase) && GROUPS_INFO[phase.split(" ")[1]] ? `(${GROUPS_INFO[phase.split(" ")[1]].length} teams)` : `· ${matches.length} matches`}
+              <div key={phase} style={{ marginBottom: 20 }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 8 }}>
+                  <div style={{ height: 2, flex: 1, background: `linear-gradient(90deg, ${PHASE_COLORS[phase] || "#1f2937"}, transparent)`, borderRadius: 2 }} />
+                  <h3 style={{ margin: 0, color: "#94a3b8", fontSize: 11, fontWeight: 700, whiteSpace: "nowrap", textTransform: "uppercase", letterSpacing: 0.8 }}>
+                    {phase} {isGroupPhase(phase) && GROUPS_INFO[phase.split(" ")[1]] ? `· ${GROUPS_INFO[phase.split(" ")[1]].length} teams` : `· ${matches.length} matches`}
                   </h3>
-                  <div style={{ height: 3, flex: 1, background: `linear-gradient(270deg, ${PHASE_COLORS[phase] || "#334155"}, transparent)`, borderRadius: 2 }} />
+                  <div style={{ height: 2, flex: 1, background: `linear-gradient(270deg, ${PHASE_COLORS[phase] || "#1f2937"}, transparent)`, borderRadius: 2 }} />
                 </div>
                 {isGroupPhase(phase) && (() => {
                   const letter = phase.split(" ")[1];
                   const teams = GROUPS_INFO[letter];
                   if (!teams) return null;
                   return (
-                    <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 12 }}>
+                    <div style={{ display: "flex", gap: 6, flexWrap: "wrap", marginBottom: 8 }}>
                       {teams.map(t => (
                         <button key={t} onClick={() => setSearchTeam(searchTeam === t ? "" : t)}
-                          style={{ background: searchTeam === t ? "#1d4ed8" : "#0f172a", color: "#e2e8f0", border: `1px solid ${searchTeam === t ? "#3b82f6" : "#334155"}`, borderRadius: 20, padding: "4px 12px", cursor: "pointer", fontSize: 12 }}>
+                          style={{ background: searchTeam === t ? "#1d4ed8" : "#111827", color: searchTeam === t ? "#fff" : "#94a3b8", border: `1px solid ${searchTeam === t ? "#3b82f6" : "#1f2937"}`, borderRadius: 6, padding: "3px 10px", cursor: "pointer", fontSize: 11 }}>
                           {TEAM_FLAGS[t] || "⚽"} {t}
                         </button>
                       ))}
@@ -958,10 +982,8 @@ export default function WorldCup2026() {
             ))}
 
             {/* ── FOOTER NOTE ── */}
-            <div style={{ marginTop: 32, background: "#1e293b", borderRadius: 12, padding: "16px 20px", border: "1px solid #334155", color: "#64748b", fontSize: 13 }}>
-              <strong style={{ color: "#94a3b8" }}>ℹ Note:</strong> All kick-off times are automatically converted to your device's local timezone.
-              Broadcast rights shown are based on confirmed deals as of April 2026. Some details may change — check your local broadcaster for the latest scheduling.
-              First-round knockout opponents (Round of 32 & beyond) depend on group stage results.
+            <div style={{ marginTop: 20, background: "#0a1628", borderRadius: 8, padding: "10px 14px", border: "1px solid #1e3a5f", color: "#374151", fontSize: 11, lineHeight: 1.6 }}>
+              Times are auto-converted to your local timezone. Broadcast rights confirmed as of Apr 2026 — check your local broadcaster for updates. Knockout opponents (R32+) subject to group stage results.
             </div>
           </>
         )}
